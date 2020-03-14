@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>b2bi-rest-api-client</groupId>
+  <artifactId>b2bi-rest-api-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>B2Bi REST API Clients</name>
+  <description>Sample REST Client programs</description>
+  
+  <dependencies>
+	 
+	<dependency>
+		<groupId>org.apache.httpcomponents.client5</groupId>
+		<artifactId>httpclient5</artifactId>
+		<version>5.0</version>
+	</dependency>
+	 
+	<dependency>
+	  <groupId>org.apache.httpcomponents.core5</groupId>
+	  <artifactId>httpcore5</artifactId>
+	  <version>5.0</version>
+	</dependency>
+	
+  </dependencies>
+</project>
