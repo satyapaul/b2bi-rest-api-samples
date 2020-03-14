@@ -22,18 +22,31 @@ Please take the mailbox message ID and see if the file image001.PNG is updated s
 
 {
   "_id": "78",
+  
   "_title": "MailboxMessage(78)",
+  
   "$ref": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78,
+	
   "href": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78,
+	
   "actions": {
+  
     "href": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78/actions,
+	
     "$ref": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78/actions
+    
   },
+  
   "mailboxPath": "/test123",
+  
   "mailboxId": 333,
+  
   "name": "image001.PNG",
+  
   "id": 78,
+  
   "creationDate": "2020-03-14T17:19:20.000+0000",
+  
   "extractableAlways": {
     "code": true,
     "display": "Yes"
