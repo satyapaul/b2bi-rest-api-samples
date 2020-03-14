@@ -30,11 +30,8 @@ Please take the mailbox message ID and see if the file image001.PNG is updated s
   "href": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78,
 	
   "actions": {
-  
     "href": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78/actions,
-	
     "$ref": http://<ip-address>:45164/B2BAPIs/svc/mailboxmessages/78/actions
-    
   },
   
   "mailboxPath": "/test123",
