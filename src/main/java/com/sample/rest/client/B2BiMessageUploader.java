@@ -33,11 +33,11 @@ import org.apache.hc.core5.ssl.SSLContexts;
 public class B2BiMessageUploader {
 
     private static String apiUri = "/B2BAPIs/svc/messagebatches/";
-    private static String serverUrl = "http://10.15.100.80:45164";
+    private static String serverUrl = "http://<replace-with-valid-ip-address>:45164";
 	private static boolean isSSL = false;
 
     private static String sourceFileLoc = "C:\\Users\\satyajit.paul\\Downloads\\";
-    private static String fileName = "image001.PNG"; //"mysql-8.0.13-macos10.14-x86_64.tar"; //"QuickStartGuide.pdf"; //"6.0_Deferred_Defects.csv";
+    private static String fileName = "image001.PNG"; 
 
     private static String mailboxPath = "/test123";
     
