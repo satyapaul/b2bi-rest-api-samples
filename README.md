@@ -5,7 +5,7 @@ Please edit the Java file and set the following java variables appropriately
 
     private static String apiUri = "/B2BAPIs/svc/messagebatches/";
     private static String serverUrl = "http://<ip-address>:45164";
-	  private static boolean isSSL = false;
+    private static boolean isSSL = false;
 
     private static String sourceFileLoc = "C:\\Users\\satyajit.paul\\Downloads\\";
     private static String fileName = "image001.PNG";  
@@ -48,6 +48,8 @@ Please take the mailbox message ID and see if the file image001.PNG is updated s
     "code": true,
     "display": "Yes"
   },
+  
   "size": 17966,
   "documentId": "restclient1:node1:170d8cdabf4:17"
+  
 }
