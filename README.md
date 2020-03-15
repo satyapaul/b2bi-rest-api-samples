@@ -28,37 +28,40 @@ Response Returned in case of this example:
 
 {
 
-  "_id": "78",
+  	"_id": "78",
   
-  "_title": "MailboxMessage(78)",
+  	"_title": "MailboxMessage(78)",
   
-  "$ref": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78,
+  	"$ref": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78,
 	
-  "href": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78,
+  	"href": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78,
 	
-  "actions": {
+  	"actions": {
   
-    "href": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78/actions,
-    "$ref": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78/actions
+    		"href": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78/actions,
+    		"$ref": http://111.111.111.111:45164/B2BAPIs/svc/mailboxmessages/78/actions
     
-  },
+  	},
   
-  "mailboxPath": "/test123",
+  	"mailboxPath": "/test123",
   
-  "mailboxId": 333,
+  	"mailboxId": 333,
   
-  "name": "image001.PNG",
+  	"name": "image001.PNG",
   
-  "id": 78,
+  	"id": 78,
   
-  "creationDate": "2020-03-14T17:19:20.000+0000",
+  	"creationDate": "2020-03-14T17:19:20.000+0000",
   
-  "extractableAlways": {
-    "code": true,
-    "display": "Yes"
-  },
+  	"extractableAlways": {
+	
+    		"code": true,
+    		"display": "Yes"
+		
+  	},
   
-  "size": 17966,
-  "documentId": "restclient1:node1:170d8cdabf4:17"
+  	"size": 17966,
+	
+  	"documentId": "restclient1:node1:170d8cdabf4:17"
   
 }
