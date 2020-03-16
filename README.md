@@ -1,6 +1,8 @@
 # b2bi-rest-api-samples
 Creating this repo to share some of the samples with larger group of B2Bi users.
 
+B2Bi REST API messagebatches can be used to upload a large file, for example I uploaded a 300 MB file using the sample program to a specific mailbox in B2Bi.
+
 Please edit the Java file and set the following java variables appropriately.
 
     private static String apiUri = "/B2BAPIs/svc/messagebatches/";
