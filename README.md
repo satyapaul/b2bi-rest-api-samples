@@ -5,7 +5,6 @@ B2Bi REST API messagebatches can be used to upload a large file, for example I u
 
 Please edit the Java file and set the following java variables appropriately.
 
-    private static String apiUri = "/B2BAPIs/svc/messagebatches/";
     private static String serverUrl = "http://111.111.111.111:45164";
     private static boolean isSSL = false;
 
