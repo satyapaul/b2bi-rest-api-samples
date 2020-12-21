@@ -30,39 +30,71 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.ssl.TLS;
 import org.apache.hc.core5.ssl.SSLContexts;
 
+/**
+* License Terms:
+* Permission is hereby granted, free of charge, to any person obtaining a copy 
+* of this software and associated documentation files (the "Software"), to deal 
+* in the Software without restriction, including without limitation the rights 
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+* copies of the Software, and to permit persons to whom the Software is furnished 
+* to do so, subject to the following conditions:
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+* IN THE SOFTWARE.
+*
+*/
+
+/**
+ * The program can upload one or multiple files to B2Bi mailbox using REST API.
+ * This is a REST API Client that does a multipart file upload using following API
+ * https://<servername>:<port>/B2BAPIs/svc/messagebatches/
+ * It uses the Basic Authorization supported by B2Bi REST APIs.
+ * @author satyajit.paul
+ * @version 1.1
+ *
+ */
 public class B2BiMessageUploader {
 
     private static String apiUri = "/B2BAPIs/svc/messagebatches/";
-    private static String serverUrl = "http://<replace-with-valid-ip-address>:45164";
+    private static String serverUrl = "http://b2biqarhlsd3:33983";//"http://<replace-with-valid-ip-address>:45164";
 	private static boolean isSSL = false;
 
     private static String sourceFileLoc = "C:\\Users\\satyajit.paul\\Downloads\\";
-    private static String fileName = "image001.PNG"; 
-
+    private static String fileName = "image001_1_1.PNG"; 
+    private static String fileName2 = "image002_2_2.PNG";     
+    private static String fileName3 = "image003_3_3.PNG"; 
+    private static String fileName4 = "system-ocp.log";
+    
     private static String mailboxPath = "/test123";
     
     public static void main(String[] args) {
-        testRegularB2BAPIsUpload();
-    }
-
-    /**
-    	TEST CODE
-    */
-    public static void testRegularB2BAPIsUpload() {
 
         Map < String, String > headerValues = new HashMap();
 
         // pain text --> Base64 Encoded String
-        //testuser:password --> dGVzdHVzZXI6cGFzc3dvcmQ=
-        //admin:password --> YWRtaW46cGFzc3dvcmQ=
+        // testuser:password --> dGVzdHVzZXI6cGFzc3dvcmQ=
+        // admin:password --> YWRtaW46cGFzc3dvcmQ=
 
         headerValues.put("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=");
-
         String sourceFilePath = sourceFileLoc + fileName;
 
 
         try {
+        	/**
+        	 * Example 1: Upload one single file.
+        	 */
             uploadUsingMessageBatchesAPI(sourceFilePath, serverUrl, apiUri, mailboxPath, headerValues, isSSL);
+            
+            /**
+        	 * Example 2: Upload multiple files.
+        	 */
+            uploadMultipleFilesUsingMessageBatchesAPI(sourceFilePath, serverUrl, apiUri, mailboxPath, headerValues, isSSL);
+            
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -80,6 +112,21 @@ public class B2BiMessageUploader {
 	/**
 	* Method does a single file upload, supports both SSL & Non-SSL
 	*/
+    
+    /**
+     * The method can upload only single file to B2Bi/SFG Mailbox, supports both SSL & Non-SSL.
+     * @param sourceFilePath
+     * @param serverUrl
+     * @param apiUri
+     * @param mailboxPath
+     * @param headerValues
+     * @param isSSL
+     * @throws IOException
+     * @throws ParseException
+     * @throws KeyManagementException
+     * @throws NoSuchAlgorithmException
+     * @throws KeyStoreException
+     */
     public static void uploadUsingMessageBatchesAPI(String sourceFilePath, String serverUrl, String apiUri, String mailboxPath, Map < String, String > headerValues, boolean isSSL) throws IOException, ParseException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
         System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
@@ -88,7 +135,7 @@ public class B2BiMessageUploader {
 
 
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        //builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+//        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 
         File file = new File(sourceFilePath);
         InputStream inputStream = new FileInputStream(file);
@@ -132,30 +179,53 @@ public class B2BiMessageUploader {
         } finally {
             httpclient.close();
         }
-
         long t1 = System.currentTimeMillis();
         System.out.println(" time taken (in ms) : " + (t1 - t0));
     }
 
 
-	// Ignore this implementation, not tested yet
-    public static void uploadMultipleFilesUsingMessageBatchesAPI() throws IOException, ParseException {
+    
+    /**
+     * Method can upload multiple files to B2Bi mailbox, supports both SSL & Non-SSL.
+     * 
+     * @param sourceFilePath
+     * @param serverUrl
+     * @param apiUri
+     * @param mailboxPath
+     * @param headerValues
+     * @param isSSL
+     * @throws IOException
+     * @throws ParseException
+     * @throws KeyManagementException
+     * @throws NoSuchAlgorithmException
+     * @throws KeyStoreException
+     */
+    public static void uploadMultipleFilesUsingMessageBatchesAPI(String sourceFilePath, String serverUrl, String apiUri, String mailboxPath, Map < String, String > headerValues, boolean isSSL)  throws IOException, ParseException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
         System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "DEBUG");
 
-        String path = "/B2BAPIs/svc/messagebatches/";
-
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         //builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 
-        File file = new File(sourceFileLoc + fileName);
-
-        InputStream inputStream = new FileInputStream(file);
-        builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), fileName);
-
+        File file2 = new File(sourceFileLoc + fileName2);
+        InputStream inputStream = new FileInputStream(file2);
+        builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), fileName2);
 		// Provide the mailbox name. Here it is /prod
         builder.addPart("mailboxName", new StringBody(mailboxPath , ContentType.MULTIPART_FORM_DATA));
+        
+        File file3 = new File(sourceFileLoc + fileName3);
+        InputStream inputStream1 = new FileInputStream(file3);
+        builder.addBinaryBody("upstream", inputStream1, ContentType.create("application/zip"), fileName3);
+		// Provide the mailbox name. Here it is /prod
+        builder.addPart("mailboxName", new StringBody(mailboxPath , ContentType.MULTIPART_FORM_DATA));
+        
+        File file4 = new File(sourceFileLoc + fileName4);
+        InputStream inputStream2 = new FileInputStream(file4);
+        builder.addBinaryBody("upstream", inputStream2, ContentType.create("application/txt"), fileName3);
+		// Provide the mailbox name. Here it is /prod
+        builder.addPart("mailboxName", new StringBody(mailboxPath , ContentType.MULTIPART_FORM_DATA));
+        
         HttpEntity entity = builder.build();
 
         System.out.println(entity.isChunked());
@@ -190,7 +260,14 @@ public class B2BiMessageUploader {
         }
     }
 
-    // This method is used when the url is SSL
+    
+    /**
+     * This method is used when the url is SSL
+     * @return
+     * @throws KeyManagementException
+     * @throws NoSuchAlgorithmException
+     * @throws KeyStoreException
+     */
     private static CloseableHttpClient getSecureHttpClient() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 
         HostnameVerifier allowAllHosts = new NoopHostnameVerifier();
